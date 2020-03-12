@@ -3,4 +3,4 @@ Repositorio para la clase de Estructura de Datos
 ## Nombre
 Hernandez Dominguez Fredy Adair
 ## Grupo
-2CV2
+no me acuerdo uwu
