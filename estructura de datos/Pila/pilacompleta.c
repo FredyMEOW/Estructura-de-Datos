@@ -1,4 +1,10 @@
+#include<stdio.h>
+#include<stdlib.h>
 
+struct Pila{
+	int dato;
+	struct Pila *abajo;
+};
 
 
 
@@ -42,4 +48,20 @@ struct Pila * pop(struct Pila *pila){
 	return(pila);
 }
 
-
+int main(void){
+	struct Pila *mipila=NULL;
+	mipila=crear(10);
+	if(mipila==NULL){
+		printf("no hay memoria");
+		return -1;
+	}
+	
+	mipila=push(mipila,20);
+	mipila=push(mipila,25);
+	mipila=push(mipila,30);
+	mostrar(mipila);
+	mipila=pop(mipila);
+	mipila=pop(mipila);
+	mostrar(mipila);
+	return 0;
+}
