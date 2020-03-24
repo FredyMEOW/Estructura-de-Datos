@@ -1,4 +1,4 @@
-lista.o: ListaCircular.c
+listaCircular.o: ListaCircular.c
 	gcc ListaCircular.c -c
 main.o: main.c
 	gcc main.c -c
