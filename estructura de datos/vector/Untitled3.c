@@ -1,58 +1,86 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
-int main(void){
 
-int num=0,cont=0,aux1=1,i=0;
-int *apuntador,*aux;
-printf("Cuantos numeros quieres ");
-scanf("%d",&num);
 
-apuntador=(int *)malloc(1 *sizeof(int));
-apuntador[0]=1;
-
-if(num==0){
-        printf("El numero elegido es 0 o mas grande que 10 a la 8");
+int hayespacio(int capacidad,int espacio){
+	if(espacio<=capacidad && espacio>0){
+		return 1;
+	}
+	else 
+	return 0;
 }
-else
-{
-    if(apuntador==NULL){
-        puts("Fin de ejecución. Error de asignación de memoria.");
-        exit (-1) ;
 
-    }
-    cont=num/num;
-    cont=cont+1;
-        do{
-            aux=(int *)malloc((aux1*2) *sizeof(int));
+void guardar(int *arr, int i){
+	*(arr+i)=i+1;
+}
 
-            do{
-            for(i=0;i<aux1;i++){
-            aux[i]=apuntador[i];
-            }
+int* reservarmemoria(int *arr,int capacidad){
+	int j=0;
+	int *arr2;
+	arr2=(int *)malloc(capacidad*2*sizeof(int));
+	
+	for(j;j<capacidad;j++){
+		*(arr2+j)=*(arr+j);
+		
+	 }
+	free(arr);
+	return (int *)arr2;
+	free(arr2);
+}
 
-            free(apuntador);
+void imprimir(int *arr,int i){
+	int j=0;
+	for(j;j<=i;j++){
+	  printf("%d ",*(arr+j));
+     }
+     printf("\n");
+   }
 
-            apuntador=(int *)malloc((aux1*2) *sizeof(int));
 
-            for(i=0;i<aux1;i++){
-            apuntador[i]=aux[i];
-            }
+void llenar(int n){
+ int *arr,espacio,capacidad,ocupados;
+ arr=(int *)malloc(sizeof(int));
+ capacidad=1;
+ espacio=1;
+ ocupados=0;
+ int i=0;
+ 
+  for(i;i<n;i++){
+   
+   if(hayespacio(capacidad,espacio)==1){
+   	guardar(arr,i);
+   	
+   	espacio--;
+   	ocupados++;
+   	
+   	imprimir(arr,i);
+}
+   else{
+    arr=(int *)reservarmemoria(arr,capacidad);
+    capacidad=capacidad*2;
+    espacio=capacidad-ocupados;
+   	guardar(arr,i);
+   	espacio--;
+   	ocupados++;
+   	imprimir(arr,i);
+   }
+ 
+   }
+}
 
-            free(aux);
-            aux1=aux1*2;
-            }while(aux1==aux1*2);
 
-            apuntador[cont-1]=cont;
-
-            for(i=0;i<cont;i++){
-            printf("%d ",*apuntador+i);
-            }
-            printf("\n");
-            cont++;
-
-        }while(cont<=num);
-        free(apuntador);
-    }
-return 0;
+int main(){
+ int n;
+ printf("Escriba el valor hasta el que llegara la secuencia\n");
+ scanf("%d",&n);
+ printf("\n");
+  if(n>0 && n<=pow(10,8)){
+   llenar(n);
+  }
+  else{
+  printf("\n Valor ingresado no vÃ¡lido");
+ }
+ return 0;
 }
