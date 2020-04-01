@@ -73,7 +73,7 @@ void llenar(int n){
 
 int main(){
  int n;
- printf("Escriba el valor hasta el que llegara la secuencia\n");
+ printf("Escriba hasta que numero quiere la serie\n");
  scanf("%d",&n);
  printf("\n");
   if(n>0 && n<=pow(10,8)){
