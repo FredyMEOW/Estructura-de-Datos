@@ -10,9 +10,9 @@ struct Cola{
 	int atras;
 };
 
-struct Cola * crear(struct Cola* nueva);
-struct Cola * insertar(struct Cola *cola,int dato);
-struct Cola * atender(struct Cola *cola);
-void mostrar(struct Cola *cola);
+struct Cola * crear(struct Cola* );
+struct Cola * insertar(struct Cola *,int);
+struct Cola * atender(struct Cola *);
+void mostrar(struct Cola *);
 
 #endif
