@@ -1,0 +1,13 @@
+Arbol_binario.o: Arbol_binario.c
+	gcc Arbol_binario.c -c
+main.o: main.c
+	gcc main.c -c
+
+a.out: main.o Arbol_binario.o
+	gcc main.o Arbol_binario.o
+
+run: a.out
+	./a.out
+
+clean:
+	rm -f a.out main.o Arbol_binario.o
